@@ -1,19 +1,12 @@
-from utils.deck import create_deck
-from utils.db import update_stats
+from utils.stickers import CARD_STICKER_MAP
 
-class UNOGame:
-    def __init__(...):
-        ...
+# When dealing the top card:
+top = self.discard[-1]
+sticker_id = CARD_STICKER_MAP.get(top)
+if sticker_id:
+    self.bot.send_sticker(self.chat_id, sticker=sticker_id)
+...
 
-    def deal(self, update, ctx):
-        ...
-        top = self.discard[-1]
-        self.bot.send_sticker(self.chat_id, sticker=top)
-        self.send_turn()
-
-    def play(self, update, ctx, card):
-        ...
-        self.bot.send_sticker(self.chat_id, sticker=card)
-        ...
-
-    # Other methods remain the same
+# When playing a card:
+if sticker_id:
+    self.bot.send_sticker(self.chat_id, sticker=sticker_id)
